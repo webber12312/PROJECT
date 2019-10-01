@@ -2,7 +2,7 @@
 #include<string.h>
 #include<fstream>
 using namespace std;
-
+//////
 void do_T1(int** tetris,int*peakincol,int ref_point)
 {
     if(peakincol[ref_point]<peakincol[ref_point+1]&&peakincol[ref_point]<peakincol[ref_point+2])
