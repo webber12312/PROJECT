@@ -246,12 +246,12 @@ void setmap(int**tetris,block b)
     }
 }
 
-void clearmap(int**tetris)
+void clearmap(int**tetris,int m,int n)
 {
     int del=1;
     for(int i=m-1;i>=0;i--)
     {
-        for(j=0;j<n;j++)
+        for(int j=0;j<n;j++)
         {
             if(tetris[i][j]==0)
             {
@@ -261,12 +261,23 @@ void clearmap(int**tetris)
         }
         if(del==1)
         {
-            for(int k=i;k>=0;k--)
+            if(i==0)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    tetris[0][j]=0;
+                }
+            }
+            for(int k=i;k>=1;k--)
             {
                 for(int j=0;j<n;j++)
                 {
                     tetris[k][j]=tetris[k-1][j];
                 }
+            }
+            for(int j=0;j<n;j++)
+            {
+                tetris[0][j]=0;
             }
             i++;
         }
@@ -642,6 +653,7 @@ int main()
         }
         block b(type,ref_pt,put);
         setmap(arr,b);
+        clearmap(arr,m,n);
         if(fail==1)break;
         memset(command,0,sizeof(command));
         fin>>command;
