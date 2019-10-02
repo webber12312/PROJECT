@@ -3,6 +3,42 @@
 #include<fstream>
 using namespace std;
 int fail=0;
+int m,n;
+
+
+
+void release(int** tetris)
+{
+    int del=1;
+    for(int i=m-1;i>=0;i--)
+    {
+        del=1;
+        for(int j=0;j<n;j++)
+        {
+            if(tetris[i][j]==0)
+            {
+                del=0;
+                break;
+            }
+        }
+        if(del==1)
+        {
+            for(int k=i;k>=1;k--)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    tetris[k][j]=tetris[k-1][j];
+                }
+            }
+            for(int j=0;j<n;j++)
+            {
+                tetris[0][j]=0;
+            }
+        }
+    }
+}
+
+
 void do_T1(int** tetris,int*peakincol,int ref_point)
 {
     if(peakincol[ref_point]<peakincol[ref_point+1]&&peakincol[ref_point]<peakincol[ref_point+2])
@@ -13,7 +49,7 @@ void do_T1(int** tetris,int*peakincol,int ref_point)
             tetris[peakincol[ref_point]][ref_point+2]=1;
         }
         else fail=1;
-        tetris[peakincol[ref_point]+1][ref_point+1]=1;
+        if(peakincol[ref_point]+1>=0)tetris[peakincol[ref_point]+1][ref_point+1]=1;
         if(fail==1)return;
         peakincol[ref_point]-=1;
         peakincol[ref_point+1]=peakincol[ref_point];
@@ -28,7 +64,7 @@ void do_T1(int** tetris,int*peakincol,int ref_point)
             tetris[peakincol[ref_point+1]-1][ref_point+2]=1;
         }
         else fail=1;
-        tetris[peakincol[ref_point+1]][ref_point+1]=1;
+        if(peakincol[ref_point+1]>=0)tetris[peakincol[ref_point+1]][ref_point+1]=1;
         if(fail==1)return;
         peakincol[ref_point+1]-=2;
         peakincol[ref_point]=peakincol[ref_point+1];
@@ -42,7 +78,7 @@ void do_T1(int** tetris,int*peakincol,int ref_point)
             tetris[peakincol[ref_point+2]][ref_point]=1;
         }
         else fail=1;
-        tetris[peakincol[ref_point+2]+1][ref_point+1]=1;
+        if(peakincol[ref_point+2]+1>=0)tetris[peakincol[ref_point+2]+1][ref_point+1]=1;
         if(fail==1)return;
         peakincol[ref_point+2]-=1;
         peakincol[ref_point+1]=peakincol[ref_point+2];
@@ -50,9 +86,51 @@ void do_T1(int** tetris,int*peakincol,int ref_point)
     }
 }
 
+
+void do_T2(int** tetris,int*peakincol,int ref_point)
+{
+    if(peakincol[ref_point]<peakincol[ref_point+1])
+    {
+        if(peakincol[ref_point]>=0)
+        {
+            tetris[peakincol[ref_point]][ref_point]=1;
+            tetris[peakincol[ref_point]][ref_point+1]=1;
+        }
+        else fail=1;
+        if(peakincol[ref_point]-1>=0)
+        tetris[peakincol[ref_point]-1][ref_point+1]=1;
+        else fail=1;
+        if(peakincol[ref_point]+1>=0)
+        tetris[peakincol[ref_point]+1][ref_point+1]=1;
+        else fail=1;
+        if(fail==1)return;
+        peakincol[ref_point]-=1;
+        peakincol[ref_point+1]=peakincol[ref_point]-1;
+    }
+    else if(peakincol[ref_point+1]<=peakincol[ref_point])
+    {
+        if(peakincol[ref_point+1]>=0)
+        tetris[peakincol[ref_point+1]][ref_point+1]=1;
+        else fail=1;
+        if(peakincol[ref_point+1]-1>=0)
+        {
+            tetris[peakincol[ref_point+1]-1][ref_point+1]=1;
+            tetris[peakincol[ref_point+1]-1][ref_point]=1;
+        }
+        else fail=1;
+        if(peakincol[ref_point+1]-2>=0)
+        tetris[peakincol[ref_point+1]-2][ref_point+1]=1;
+        else fail=1;
+        if(fail==1)return;
+        peakincol[ref_point]=peakincol[ref_point+1]-2;
+        peakincol[ref_point+1]-=3;
+    }
+}
+
+
+
 int main()
 {
-    int m,n;
     int reference_point;
     ifstream fin("test.txt");
     fin>>m>>n;
@@ -84,6 +162,12 @@ int main()
         if(command[0]=='T'&&command[1]=='1')
         {
             do_T1(arr,peakincol,reference_point-1);
+            release(arr);
+        }
+        else if(command[0]=='T'&&command[1]=='2')
+        {
+            do_T2(arr,peakincol,reference_point-1);
+            release(arr);
         }
         memset(command,0,sizeof(command));
         fin>>command;
