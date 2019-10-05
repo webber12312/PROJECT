@@ -245,7 +245,7 @@ void setmap(int**tetris,block b)
 void clearmap(int**tetris,int m,int n)
 {
     int del=1;
-    for(int i=m-1;i>=0;i--)
+    for(int i=m-1+3;i>=0;i--)
     {
         for(int j=0;j<n;j++)
         {
