@@ -245,7 +245,7 @@ void setmap(int**tetris,block b)
 void clearmap(int**tetris,int m,int n)
 {
     int del=1;
-    for(int i=m-1+3;i>=3;i--)
+    for(int i=m-1+4;i>=4;i--)
     {
         for(int j=0;j<n;j++)
         {
@@ -278,7 +278,7 @@ int isfail(int**tetris,int n)
 {
     for(int i=0;i<n;i++)
     {
-        if(tetris[2][i]==1)return 1;
+        if(tetris[3][i]==1)return 1;
     }
     return 0;
 }
@@ -290,16 +290,16 @@ int main()
     ifstream fin("test.txt");
     ofstream fout("final.txt");
     fin>>m>>n;
-    int tetris[m+3][n];
-    int* arr[m+3];
-    for(int i=0;i<m+3;i++)
+    int tetris[m+4][n];
+    int* arr[m+4];
+    for(int i=0;i<m+4;i++)
     {
         for(int j=0;j<n;j++)
         {
             tetris[i][j]=0;
         }
     }
-    for(int i=0;i<m+3;i++)
+    for(int i=0;i<m+4;i++)
     {
         arr[i]=tetris[i];
     }
@@ -312,7 +312,7 @@ int main()
         if(command[0]=='T'&&command[1]=='1')
         {
             type=1;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-2;
@@ -326,13 +326,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-2+3;
+                else put=m-2+4;
             }
         }
         else if(command[0]=='T'&&command[1]=='2')
         {
             type=2;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-2;
@@ -342,13 +342,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-2+3;
+                else put=m-2+4;
             }
         }
         else if(command[0]=='T'&&command[1]=='3')
         {
             type=3;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -362,13 +362,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='T'&&command[1]=='4')
         {
             type=4;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i;
@@ -378,13 +378,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='L'&&command[1]=='1')
         {
             type=5;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -394,13 +394,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='L'&&command[1]=='2')
         {
             type=6;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i;
@@ -414,13 +414,13 @@ int main()
                 {put=i;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='L'&&command[1]=='3')
         {
             type=7;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-3;
@@ -430,13 +430,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-3+3;
+                else put=m-3+4;
             }
         }
         else if(command[0]=='L'&&command[1]=='4')
         {
             type=8;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -450,13 +450,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='J'&&command[1]=='1')
         {
             type=9;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -466,13 +466,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='J'&&command[1]=='2')
         {
             type=10;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -486,13 +486,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='J'&&command[1]=='3')
         {
             type=11;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i+1;
@@ -502,13 +502,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='J'&&command[1]=='4')
         {
             type=12;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -522,13 +522,13 @@ int main()
                 {put=i-2;
                  break;
                 }
-                else put=m-2+3;
+                else put=m-2+4;
             }
         }
         else if(command[0]=='S'&&command[1]=='1')
         {
             type=13;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
@@ -542,13 +542,13 @@ int main()
                 {put=i;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='S'&&command[1]=='2')
         {
             type=14;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-2;
@@ -558,13 +558,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-2+3;
+                else put=m-2+4;
             }
         }
         else if(command[0]=='Z'&&command[1]=='1')
         {
             type=15;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i-2;
@@ -578,13 +578,13 @@ int main()
                 {put=i-2;
                  break;
                 }
-                else put=m-2+3;
+                else put=m-2+4;
             }
         }
         else if(command[0]=='Z'&&command[1]=='2')
         {
             type=16;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt+1]==1)
                 {put=i;
@@ -594,25 +594,25 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='I'&&command[1]=='1')
         {
             type=17;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt]==1)
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='I'&&command[1]=='2')
         {
             type=18;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt]==1)
                 {put=i-1;
@@ -630,13 +630,13 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         else if(command[0]=='O')
         {
             type=19;
-            for(int i=3;i<=m+2;i++)
+            for(int i=4;i<=m+3;i++)
             {
                 if(tetris[i][ref_pt]==1)
                 {put=i-1;
@@ -646,7 +646,7 @@ int main()
                 {put=i-1;
                  break;
                 }
-                else put=m-1+3;
+                else put=m-1+4;
             }
         }
         block b(type,ref_pt,put);
@@ -656,7 +656,7 @@ int main()
         memset(command,0,sizeof(command));
         fin>>command;
     }
-    for(int i=3;i<=m+2;i++)
+    for(int i=4;i<=m+3;i++)
     {
         for(int j=0;j<n;j++)
         {
