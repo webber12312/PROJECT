@@ -371,12 +371,12 @@ int main()
             type=4;
             for(int i=4;i<=m+3;i++)
             {
-                if(tetris[i][ref_pt+1]==1)
-                {put=i;
+                if(tetris[i][ref_pt]==1)
+                {put=i-1;
                  break;
                 }
-                else if(tetris[i][ref_pt]==1)
-                {put=i-1;
+                else if(tetris[i][ref_pt+1]==1)
+                {put=i;
                  break;
                 }
                 else put=m-1+4;
@@ -403,12 +403,12 @@ int main()
             type=6;
             for(int i=4;i<=m+3;i++)
             {
-                if(tetris[i][ref_pt+1]==1)
-                {put=i;
+                if(tetris[i][ref_pt]==1)
+                {put=i-1;
                  break;
                 }
-                else if(tetris[i][ref_pt]==1)
-                {put=i-1;
+                else if(tetris[i][ref_pt+1]==1)
+                {put=i;
                  break;
                 }
                 else if(tetris[i][ref_pt+2]==1)
@@ -495,12 +495,12 @@ int main()
             type=11;
             for(int i=4;i<=m+3;i++)
             {
-                if(tetris[i][ref_pt+1]==1)
-                {put=i+1;
+                if(tetris[i][ref_pt]==1)
+                {put=i-1;
                  break;
                 }
-                else if(tetris[i][ref_pt]==1)
-                {put=i-1;
+                else if(tetris[i][ref_pt+1]==1)
+                {put=i+1;
                  break;
                 }
                 else put=m-1+4;
@@ -511,16 +511,16 @@ int main()
             type=12;
             for(int i=4;i<=m+3;i++)
             {
-                if(tetris[i][ref_pt+1]==1)
+                if(tetris[i][ref_pt+2]==1)
+                {put=i-2;
+                 break;
+                }
+                else if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
                  break;
                 }
                 else if(tetris[i][ref_pt]==1)
                 {put=i-1;
-                 break;
-                }
-                else if(tetris[i][ref_pt+2]==1)
-                {put=i-2;
                  break;
                 }
                 else put=m-2+4;
@@ -571,12 +571,12 @@ int main()
                 {put=i-2;
                  break;
                 }
-                else if(tetris[i][ref_pt]==1)
-                {put=i-1;
-                 break;
-                }
                 else if(tetris[i][ref_pt+2]==1)
                 {put=i-2;
+                 break;
+                }
+                else if(tetris[i][ref_pt]==1)
+                {put=i-1;
                  break;
                 }
                 else put=m-2+4;
@@ -587,12 +587,12 @@ int main()
             type=16;
             for(int i=4;i<=m+3;i++)
             {
-                if(tetris[i][ref_pt+1]==1)
-                {put=i;
+                if(tetris[i][ref_pt]==1)
+                {put=i-1;
                  break;
                 }
-                else if(tetris[i][ref_pt]==1)
-                {put=i-1;
+                else if(tetris[i][ref_pt+1]==1)
+                {put=i;
                  break;
                 }
                 else put=m-1+4;
@@ -619,15 +619,15 @@ int main()
                 {put=i-1;
                  break;
                 }
-                if(tetris[i][ref_pt+1]==1)
+                else if(tetris[i][ref_pt+1]==1)
                 {put=i-1;
                  break;
                 }
-                if(tetris[i][ref_pt+2]==1)
+                else if(tetris[i][ref_pt+2]==1)
                 {put=i-1;
                  break;
                 }
-                if(tetris[i][ref_pt+3]==1)
+                else if(tetris[i][ref_pt+3]==1)
                 {put=i-1;
                  break;
                 }
