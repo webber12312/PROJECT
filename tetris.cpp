@@ -290,8 +290,8 @@ int main()
 {
     int m,n,type,put;
     int ref_pt;
-    ifstream fin("tetris.data");
-    ofstream fout("tetris.final");
+    ifstream fin("Tetris.data");
+    ofstream fout("Tetris.final");
     fin>>m>>n;
     int tetris[m+4][n];
     int* arr[m+4];
